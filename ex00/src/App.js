@@ -1,4 +1,8 @@
 import { useState,useRef} from "react";
+
+var emls = [];
+var pwords = [];
+
 function App() {
   const nameRef = useRef(null);
   const surRef = useRef(null);
@@ -13,21 +17,21 @@ function App() {
   const [email2, setEm2] = useState('');
   const [pword2, setPw2] = useState('');
 
-  const emls = {};
-  
-  
+
+
   function checkArr(_email, _pword){
     var flag = false;
-    for(var key in emls){
-      if(key === _email){
+    for(var i = 0; i < emls.length; i++){
+      console.log(emls[i]);
+      if(emls[i] === _email){
         flag = true;
         break;
       }
     }
     if(!flag){
-      emls[_email] = _pword;
+      emls.push(_email);
+      pwords.push(_pword);
     }
-    console.log(emls);
   }
 
   function log(){
@@ -39,9 +43,9 @@ function App() {
   }
  
   function login(_email, _pword){
-    for(var key in emls){
-      if(key === _email){
-        if(emls[key] === _pword){
+    for(var i = 0; i < emls.length; i++){
+      if(emls[i] === _email){
+        if(pwords[i] === _pword){
           return true;
         }
       }
