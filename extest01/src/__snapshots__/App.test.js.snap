@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should take a snapshot 1`] = `
+<DocumentFragment>
+  <div>
+    <input
+      accept=".csv"
+      name="file"
+      style="display: block; margin: 10px auto;"
+      type="file"
+    />
+    <br />
+    <br />
+    <table>
+      <thead>
+        <tr />
+      </thead>
+      <tbody />
+    </table>
+    <br />
+    <table>
+      <thead>
+        <tr />
+      </thead>
+      <tbody />
+    </table>
+  </div>
+</DocumentFragment>
+`;
