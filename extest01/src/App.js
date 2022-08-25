@@ -3,6 +3,7 @@ import { useState } from "react";
 import Papa from "papaparse";
 import Table from "./list";
 import evaluate_entry from "./MxSystem";
+import "./App.css";
 
 function App() {
   // State to store parsed data
@@ -58,22 +59,30 @@ function App() {
   };
 
   return (
-    <div>
-      {/* File Uploader */}
-      <input
-        type="file"
-        name="file"
-        onChange={changeHandler}
-        accept=".csv"
-        style={{ display: "block", margin: "10px auto" }}
-      />
-      <br />
-      <br />
-      {/* Table */}
-      <Table values = {values} tableRows={tableRows}/>
-      <br />
-      <Table values = {mxValues} tableRows={tableRows}/>
-    </div>
+    <>
+      <div>
+        {/* File Uploader */}
+        <input
+          type="file"
+          name="file"
+          onChange={changeHandler}
+          accept=".csv"
+          style={{ display: "block", margin: "10px auto" }}
+        />
+        <br />
+        <br />
+        {/* Table */}
+        <div className="encompass">
+          <div className="first">
+            <Table values = {values} tableRows={tableRows}/>
+          </div>
+          <br />
+          <div className="second">
+            <Table values = {mxValues} tableRows={tableRows}/>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 

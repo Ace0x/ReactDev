@@ -1,0 +1,27 @@
+.encompass {
+    display: grid;
+    grid-template-columns: 2;
+    grid-template-rows: 1;
+}
+
+.first {
+    border: 2px red solid;
+    grid-column: 1;
+    grid-row: 1;
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+}
+
+.second {
+    border: 2px blue solid;
+    grid-column: 2;
+    grid-row: 1;
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+}
+
+Table {
+    width: max-content;
+}
