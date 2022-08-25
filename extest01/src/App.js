@@ -40,17 +40,20 @@ function App() {
 
         // Filtered Values
         setValues(valuesArray);
-        
+
+        let mxArray = [];
+        console.log(valuesArray.length);
+        console.log("Values:  " + valuesArray);
+        for(let i = 0; i < valuesArray.length; i++)
+        {
+          console.log(valuesArray[i]);
+          mxArray.push(evaluate_entry(valuesArray[i]));
+        }
+        setMx(mxArray);
       },
     });
     //Convert Values
-    let mxArray = [];
-    console.log("Values:  " + typeof(values));
-    for(let i = 0; i < {values}.length(); i++)
-    {
-      mxArray.push(evaluate_entry(values[i]));
-    }
-    setMx(mxArray);
+ 
   };
 
   return (
