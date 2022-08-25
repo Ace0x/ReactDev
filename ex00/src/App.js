@@ -1,4 +1,4 @@
-import { useState,useRef} from "react";
+import { useState, useRef } from "react";
 
 var emls = [];
 var pwords = [];
@@ -10,42 +10,40 @@ function App() {
   const pwRef = useRef(null);
   const emRef2 = useRef(null);
   const pwRef2 = useRef(null);
-  const [name, setName] = useState('');
-  const [surname, setSur] = useState('');
-  const [email, setEm] = useState('');
-  const [pword, setPw] = useState('');
-  const [email2, setEm2] = useState('');
-  const [pword2, setPw2] = useState('');
+  const [name, setName] = useState("");
+  const [surname, setSur] = useState("");
+  const [email, setEm] = useState("");
+  const [pword, setPw] = useState("");
+  const [email2, setEm2] = useState("");
+  const [pword2, setPw2] = useState("");
 
-
-
-  function checkArr(_email, _pword){
+  function checkArr(_email, _pword) {
     var flag = false;
-    for(var i = 0; i < emls.length; i++){
+    for (var i = 0; i < emls.length; i++) {
       console.log(emls[i]);
-      if(emls[i] === _email){
+      if (emls[i] === _email) {
         flag = true;
         break;
       }
     }
-    if(!flag){
+    if (!flag) {
       emls.push(_email);
       pwords.push(_pword);
     }
   }
 
-  function log(){
+  function log() {
     setEm2(emRef2.current.value);
     setPw2(pwRef2.current.value);
-    if(login(email2,pword2)){
+    if (login(email2, pword2)) {
       console.log("success!");
     }
   }
- 
-  function login(_email, _pword){
-    for(var i = 0; i < emls.length; i++){
-      if(emls[i] === _email){
-        if(pwords[i] === _pword){
+
+  function login(_email, _pword) {
+    for (var i = 0; i < emls.length; i++) {
+      if (emls[i] === _email) {
+        if (pwords[i] === _pword) {
           return true;
         }
       }
@@ -58,66 +56,38 @@ function App() {
     setSur(surRef.current.value);
     setEm(emRef.current.value);
     setPw(pwRef.current.value);
-    checkArr(email,pword);
-  };
+    checkArr(email, pword);
+  }
 
   return (
     <div className="App">
       <h1>Register</h1>
       <h2>Name:</h2>
-      <input 
-        ref={nameRef}
-        type="text" 
-        id="name"
-        name="name"
-      />
+      <input ref={nameRef} type="text" id="name" name="name" />
       <h2>Surname :</h2>
-      <input 
-        ref={surRef}
-        type="text" 
-        id="surname"
-        name="surname"
-      />
+      <input ref={surRef} type="text" id="surname" name="surname" />
       <h2>Email :</h2>
-      <input 
-        ref={emRef}
-        type="text" 
-        id="email"
-        name="email"
-      />
+      <input ref={emRef} type="text" id="email" name="email" />
       <h2>Password :</h2>
-      <input 
-        ref={pwRef}
-        type="password" 
-        id="pword"
-        name="pword"
-      />
+      <input ref={pwRef} type="password" id="pword" name="pword" />
       <br></br>
       <button onClick={handleClick}> Submit</button>
       <h2>Contact:</h2>
-      <p> {name} {surname}</p>
+      <p>
+        {" "}
+        {name} {surname}
+      </p>
       <h2>Email:</h2>
       <p>{email}</p>
 
       <h1>Login</h1>
       <h2>Email :</h2>
-      <input 
-        ref={emRef2}
-        type="text" 
-        id="email2"
-        name="email2"
-      />
+      <input ref={emRef2} type="text" id="email2" name="email2" />
       <h2>Password :</h2>
-      <input 
-        ref={pwRef2}
-        type="password" 
-        id="pword2"
-        name="pword2"
-      />
+      <input ref={pwRef2} type="password" id="pword2" name="pword2" />
       <button onClick={log}> Submit</button>
     </div>
-    
   );
-};
+}
 
 export default App;
