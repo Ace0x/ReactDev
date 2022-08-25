@@ -3,6 +3,7 @@ import { useState } from "react";
 import Papa from "papaparse";
 import Table from "./list";
 import evaluate_entry from "./MxSystem";
+
 function App() {
   // State to store parsed data
   const [parsedData, setParsedData] = useState([]);
@@ -70,6 +71,7 @@ function App() {
       <br />
       {/* Table */}
       <Table values = {values} tableRows={tableRows}/>
+      <br />
       <Table values = {mxValues} tableRows={tableRows}/>
     </div>
   );
