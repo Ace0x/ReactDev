@@ -40,6 +40,8 @@ function grade_switch(values)
         return "D";
     else if(values >= 0)
         return "E";
+    else
+        return '';
 } 
 
 export default function evaluate_entry(values){
