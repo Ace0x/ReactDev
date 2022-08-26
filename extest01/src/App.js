@@ -3,6 +3,7 @@ import Papa from "papaparse";
 import Table from "./list";
 import evaluate_entry from "./MxSystem";
 import FileUpload from "./FileUpload";
+import "./App.css";
 
 function App() {
   // State to store parsed data
