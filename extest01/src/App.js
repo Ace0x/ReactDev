@@ -1,8 +1,8 @@
-
 import { useState } from "react";
 import Papa from "papaparse";
 import Table from "./list";
 import evaluate_entry from "./MxSystem";
+import FileUpload from "./FileUpload";
 
 function App() {
   // State to store parsed data
@@ -13,7 +13,7 @@ function App() {
 
   //State to store the values
   const [values, setValues] = useState([]);
-  
+
   //State to store changed values
   const [mxValues, setMx] = useState([]);
 
@@ -45,8 +45,7 @@ function App() {
         let mxArray = [];
         console.log(valuesArray.length);
         console.log("Values:  " + valuesArray);
-        for(let i = 0; i < valuesArray.length; i++)
-        {
+        for (let i = 0; i < valuesArray.length; i++) {
           console.log(valuesArray[i]);
           mxArray.push(evaluate_entry(valuesArray[i]));
         }
@@ -54,25 +53,18 @@ function App() {
       },
     });
     //Convert Values
- 
   };
 
   return (
     <div>
       {/* File Uploader */}
-      <input
-        type="file"
-        name="file"
-        onChange={changeHandler}
-        accept=".csv"
-        style={{ display: "block", margin: "10px auto" }}
-      />
+      <FileUpload onChange={changeHandler} />
       <br />
       <br />
       {/* Table */}
-      <Table values = {values} tableRows={tableRows}/>
+      <Table values={values} tableRows={tableRows} />
       <br />
-      <Table values = {mxValues} tableRows={tableRows}/>
+      <Table values={mxValues} tableRows={tableRows} />
     </div>
   );
 }
