@@ -38,7 +38,7 @@ function grade_switch(values)
         return "D+";
     else if(values >= 64)
         return "D";
-    else
+    else if(values >= 0)
         return "E";
 } 
 
