@@ -3,6 +3,11 @@
 exports[`should take a snapshot 1`] = `
 <DocumentFragment>
   <div>
+    <h1
+      data-testid="upload-label"
+    >
+      Upload a file
+    </h1>
     <input
       accept=".csv"
       id="fileUpload"

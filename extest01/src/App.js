@@ -2,7 +2,6 @@ import { useState } from "react";
 import Papa from "papaparse";
 import Table from "./list";
 import evaluate_entry from "./MxSystem";
-import FileUpload from "./FileUpload";
 import "./App.css";
 
 function App() {
@@ -59,7 +58,15 @@ function App() {
   return (
     <div>
       {/* File Uploader */}
-      <FileUpload onChange={changeHandler} />
+      <h1 data-testid="upload-label">Upload a file</h1>
+      <input
+        type="file"
+        name="file"
+        onChange={changeHandler}
+        accept=".csv"
+        style={{ display: "block", margin: "10px auto" }}
+        id="fileUpload"
+      />
       <br />
       <br />
       {/* Table */}
