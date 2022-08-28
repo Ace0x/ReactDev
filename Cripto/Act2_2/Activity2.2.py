@@ -96,7 +96,7 @@ def cipherTwo():
 cipherOne()
 cipherTwo()
 
-# ALTERNATE IMPLEMENTATIONS OF CIPHERS
+# ALTERNATE IMPLEMENTATIONS OF CIPHERS WITH UNICODE
 # --------------------------------------------------------------------------------
 
 # Caesar cipher + decipher
