@@ -105,66 +105,87 @@ def fileReader(file):
         lines = f.readlines()
     return lines[0]
 
-# Caesar cipher that works with a specific alphabet, can decipher if the second parameter is 27-key
-# USAGE: (message, key)
+# Caesar cipher that works with a specific alphabet, can decipher if the third parameter is 'd'
+# USAGE: (message, key, mode)
 #           message: string input to cipher
 #           key: int between 1 - 27
+#           mode: char that indicates whether to encrypt or decrypt
 # EXAMPLE: CaesarCipherV2('hello world', 16)
-# EXAMPLE: CaesarCipherV2('xuaadpldgat', 27-16)
-def CaesarCipherV2(msg, k):
+# EXAMPLE: CaesarCipherV2('xuaadpldgat', 16, 'd')
+def CaesarCipherV2(msg, k, mode = 'e'):
     x = ''
+    if mode == 'd':
+        k = 27 - k
     cipher = alphabet[k:] + alphabet[:k]
-
     msg = msg.lower()
-
     for i in msg:
         ind = alphabet.index(i)
         x += cipher[ind]
-
     return x
 
-# Vigenere cipher that works with a specific alphabet, can decipher if the second parameter is 27-key
-# USAGE: (message, key)
+# Vigenere cipher that works with a specific alphabet, can decipher if the third parameter is 'd'
+# USAGE: (message, key, mode)
 #           message: string input to cipher
 #           key: array of n ints, each between 1 - 27
+#           mode: char that indicates whether to encrypt or decrypt
 # EXAMPLE: VigenereCipherV2('hello world', [16,12,3,21])
-# EXAMPLE: VigenereCipherV2('xqofdlzigxg', [27-16,27-12,27-3,27-21])
-def VigenereCipherV2(msg, k):
+# EXAMPLE: VigenereCipherV2('xqofdlzigxg', [16,12,3,21], 'd')
+def VigenereCipherV2(msg, k, mode = 'e'):
     x = ''
     cipher = []
     key = 0
-
-    msg = msg.lower()
-    
+    if mode == 'd':
+        for i in range(len(k)):
+            k[i] = 27 - k[i]
+    msg = msg.lower()    
     for i in k:
         cipher.append(alphabet[i:] + alphabet[:i])
-
     for i in msg:
         ind = alphabet.index(i)
         x += cipher[key][ind]
-
         if key == len(k)-1:
             key = 0
         else:
             key += 1
-
     return x
+
+def oneTimePadV2(msg):
+    k = []
+    for i in msg:
+        k.append(random.randint(1,27))
+    return [VigenereCipherV2(msg,k),k]
 
 # deciphers cipher1.txt : WORKS
 def cipherOne():
     filetext = fileReader('cipher1.txt')
     res = Counter(filetext)
     res = max(res, key = res.get)
-
     ind = alphabet.index(res) + 1
-
     with open('decipher1.txt', 'w') as f:
-        f.write(CaesarCipherV2(filetext, 27-ind))
-
-cipherOne()
+        f.write(CaesarCipherV2(filetext, ind, 'd'))
 
 # deciphers cipher2.txt : DOESN'T WORK
 def cipherTwo():
     filetext = fileReader('cipher2.txt')
+    key_length = 4
+    c = 0
+    seq = [[],[],[],[]]
+    frq = []
+    for i in filetext:
+        if c >= key_length:
+            c = 0
+        seq[c].append(i)
+        c += 1
+    for i in seq:
+        s = ""
+        res = Counter(s.join(i))
+        res = max(res, key = res.get)
+        frq.append(res)
+    for i in range(len(frq)):
+        index = alphabet.index(frq[i]) + 1
+        frq[i] = index
+    with open('decipher2.txt', 'w') as f:
+        f.write(VigenereCipherV2(filetext, frq, 'd'))
 
-print(VigenereCipherV2('xqofdlzigxg', [27-16,27-12,27-3,27-21]))
+cipherOne()
+cipherTwo()
