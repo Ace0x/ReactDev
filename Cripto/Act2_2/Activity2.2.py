@@ -58,7 +58,7 @@ def VigenereCipherV2(msg, k, mode = 'e'):
 def oneTimePadV2(msg):
     k = []
     for i in msg:
-        k.append(random.randint(1,27))
+        k.append(random.randint(1,len(alphabet)))
     return [VigenereCipherV2(msg,k),k]
 
 # deciphers cipher1.txt : WORKS
