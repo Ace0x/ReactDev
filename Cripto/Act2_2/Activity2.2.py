@@ -149,6 +149,7 @@ def VigenereCipherV2(msg, k, mode = 'e'):
             key += 1
     return x
 
+# One-time pad for ciphering with Vigenere
 def oneTimePadV2(msg):
     k = []
     for i in msg:
@@ -164,7 +165,7 @@ def cipherOne():
     with open('decipher1.txt', 'w') as f:
         f.write(CaesarCipherV2(filetext, ind, 'd'))
 
-# deciphers cipher2.txt : DOESN'T WORK
+# deciphers cipher2.txt : WORKS
 def cipherTwo():
     filetext = fileReader('cipher2.txt')
     key_length = 4
