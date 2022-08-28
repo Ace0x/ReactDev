@@ -20,7 +20,7 @@ def fileReader(file):
 def CaesarCipherV2(msg, k, mode = 'e'):
     x = ''
     if mode == 'd':
-        k = 27 - k
+        k = len(alphabet) - k
     cipher = alphabet[k:] + alphabet[:k]
     msg = msg.lower()
     for i in msg:
@@ -41,7 +41,7 @@ def VigenereCipherV2(msg, k, mode = 'e'):
     key = 0
     if mode == 'd':
         for i in range(len(k)):
-            k[i] = 27 - k[i]
+            k[i] = len(alphabet) - k[i]
     msg = msg.lower()    
     for i in k:
         cipher.append(alphabet[i:] + alphabet[:i])
