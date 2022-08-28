@@ -13,7 +13,7 @@ def fileReader(file):
 # Caesar cipher that works with a specific alphabet, can decipher if the third parameter is 'd'
 # USAGE: (message, key, mode)
 #           message: string input to cipher
-#           key: int between 1 - 27
+#           key: int between 1 - len(alphabet)
 #           mode: char that indicates whether to encrypt or decrypt
 # EXAMPLE: CaesarCipherV2('hello world', 16)
 # EXAMPLE: CaesarCipherV2('xuaadpldgat', 16, 'd')
@@ -31,7 +31,7 @@ def CaesarCipherV2(msg, k, mode = 'e'):
 # Vigenere cipher that works with a specific alphabet, can decipher if the third parameter is 'd'
 # USAGE: (message, key, mode)
 #           message: string input to cipher
-#           key: array of n ints, each between 1 - 27
+#           key: array of n ints, each between 1 - len(alphabet)
 #           mode: char that indicates whether to encrypt or decrypt
 # EXAMPLE: VigenereCipherV2('hello world', [16,12,3,21])
 # EXAMPLE: VigenereCipherV2('xqofdlzigxg', [16,12,3,21], 'd')
