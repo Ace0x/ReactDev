@@ -1,3 +1,6 @@
+# Emiliano Cabrera - A01025453
+# Andrew Dunkerley - A01025076
+
 import random
 from collections import Counter
 
