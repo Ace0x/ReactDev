@@ -72,6 +72,8 @@ def cipherOne():
     ind = alphabet.index(res) + 1
     with open('decipher1.txt', 'w') as f:
         f.write(CaesarCipherV2(filetext, ind, 'd'))
+    with open('key1.txt', 'w') as f:
+        f.write("cipher1 Key: " + res)
 
 # deciphers cipher2.txt : WORKS
 def cipherTwo():
@@ -80,6 +82,7 @@ def cipherTwo():
     c = 0
     seq = [[],[],[],[]]
     frq = []
+    k = []
     for i in filetext:
         if c >= key_length:
             c = 0
@@ -90,11 +93,16 @@ def cipherTwo():
         res = Counter(s.join(i))
         res = max(res, key = res.get)
         frq.append(res)
+
+    k = frq.copy()
+
     for i in range(len(frq)):
         index = alphabet.index(frq[i]) + 1
         frq[i] = index
     with open('decipher2.txt', 'w') as f:
-        f.write(VigenereCipherV2(filetext, frq, 'd'))
+        f.write(VigenereCipherV2(filetext, frq, 'd'))    
+    with open('key2.txt', 'w') as f:
+        f.write("cipher2 Keys: " + str(k))
 
 cipherOne()
 cipherTwo()
