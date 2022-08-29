@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Descarga de archivos</title>
+    </head>
+    <body>
+        <p>Lista de archivos a descargar</p>
+        <form action="/descargar" method="POST">
+            <label for="documentos">Selecciona un documento</label>
+            <select id="documentos" name="documentos">
+                <%for(var i = 0; i < archivos.length; i++) {%>
+                <option value="<%= archivos[i]%>"><%= archivos[i]%></option>
+                <%} %>
+            </select>
+            <input type="submit" value="Descargar">
+        </form>
+    </body>
+</html>
